@@ -1,0 +1,51 @@
+import random
+
+user_wins = 0
+cpu_wins = 0
+options = ["rock", "paper", "scissors"]
+
+while True:
+    user_input = input("Type Rock/Paper/Scissors or Q to quit. ").lower()
+    if user_input == "q": 
+        break
+
+    if user_input not in options:
+        continue
+
+    random_number = random.randint(0, 2) # AI selection range
+    # rock = 1, paper = 2, scissors = 3.
+
+    cpu_pick = options[random_number]# the AI picks from the list R P or S
+    print("AI picked", cpu_pick + ".")
+
+#below considers the possibility of the user winning
+ 
+    if user_input == "rock" and cpu_pick == "scissors":
+        print("You won!")
+        user_wins +=1 #amount of times user won
+    
+    elif user_input == "paper" and cpu_pick == "rock":
+        print("You won!")
+        user_wins +=1
+    
+    elif user_input == "scissors" and cpu_pick == "paper":
+        print("You won!")
+        user_wins +=1
+    
+    elif user_input == "scissors" and cpu_pick == "scissors":
+        print("Draw!")
+
+    elif user_input == "rock" and cpu_pick == "rock":
+        print("Draw!")
+
+    elif user_input == "paper" and cpu_pick == "paper":
+        print("Draw!")
+    
+# AI wins
+    else:
+        print("You lost! hahaha! ")
+        cpu_wins += 1 #amount of times AI won
+
+print("You won", user_wins, "times.")
+print("The AI won", cpu_wins, "times.")
+print("Good bye!")
