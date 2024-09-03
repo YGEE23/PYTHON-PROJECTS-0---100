@@ -1,0 +1,67 @@
+#functions for arithemetic operations
+def add (a,b):
+    return a + b
+
+def sub (a,b):
+    return a - b
+
+def mult (a,b):
+    return a * b
+
+def div (a,b):
+    # handle division by zero
+    if b == 0:
+        return "Error! Division by zero."
+    return a / b
+
+def calculator():
+    while True:
+        print("\n Simple Calculator")
+        print("---------------------------")
+
+        #collects user values for calculations
+        try:
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+        except ValueError:
+            print("Please input a valid number")
+            continue
+
+        print ("What operation do you want to perform?")
+        print ("1 add (+)")
+        print ("2 subtract (-)")
+        print ("3 multiply (*)")
+        print ("4 divide (/)")
+
+        calculate = input("Enter your choice (1/2/3/4): ")
+
+        # Perform the operation
+        if calculate == "1":
+            result = add(num1, num2)
+            print(f"Result: {num1} + {num2} = {result}")
+
+        elif calculate == "2":
+            result = sub(num1, num2)
+            print(f"Result: {num1} - {num2} = {result}")
+        
+        elif calculate == "3":
+            result = mult(num1, num2)
+            print(f"Result = {result}")
+
+        elif calculate == "4":
+            result = div(num1, num2)
+            print(f"Result = {result}")
+        
+        else:
+            print("Invalid operation of choice!")
+            continue
+
+        again = input("Do you want to perform another operation (y/n)?")
+        if again == "y":
+            continue
+        else:
+            print("See you on the other side then")
+            break
+
+if __name__ == "__main__":
+    calculator()
