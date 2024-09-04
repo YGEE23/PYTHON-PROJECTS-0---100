@@ -1,0 +1,43 @@
+#Basic Shopping List
+'''
+Instructions:
+
+Allow the user to add items to the shopping list.
+Allow the user to view the current list of items.
+Provide an option to remove an item from the list.
+Allow the user to clear the entire list.
+Implement a menu to navigate these options.
+The program should continue running until the user chooses to exit.
+
+'''
+
+# List of items in the shopping list
+
+def list():
+    shopping_list = ['banana', 'apple', 'slides', 'milk', 'sugar','bread', 'beverages']
+
+    # formatted list horizontally
+    formated_list = ', '.join(shopping_list)
+    # Displays Items in list vertically
+    for item in shopping_list:
+            print(item)
+
+    while True:
+        # formatted list vertically
+        print("Current shopping list: ")
+        for item in shopping_list:
+            print(item)
+        
+        adding = input("Would you like to add to the list? (y/n): ")
+        if adding == "y":
+            add_list = str(input("Enter name of item: "))
+            shopping_list.append(add_list)
+
+            # view list
+            view_list = input("Would you like to view your list? (y/n): ")
+            if view_list == "y":
+                print(shopping_list)
+            if view_list == "n":
+                print(adding)
+ 
+print(list())
