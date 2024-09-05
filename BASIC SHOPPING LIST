@@ -29,17 +29,25 @@ def view():
         print(item)
 
 # clear shopping list
-
 def clear():
     shopping_list.clear()
-    print("Shopping list have been cleared!")
+    print("Shopping list has been cleared!")
+
+# delete an item on the list
+def delete ():
+    item_to_delete = input("Enter name of item to delete: ")
+
+    try:
+        shopping_list.remove(item_to_delete)
+        print(f"{item_to_delete} was deleted from the shopping list.")
+    except ValueError:
+        print(f"Error: {item_to_delete} is not in the shopping list.")
 
 
-def list():
-
+def shopping_menu():
     while True:
 
-        print("What do you want to do to your shopping list?\n")
+        print("\n What do you want to do to your shopping list?\n")
 
         print(" [1] to add to list")
         print(" [2] to view list")
@@ -47,26 +55,26 @@ def list():
         print(" [4] to clear list")
         print(" [q] to quit \n")
 
-        user_input = input("Enter your choice [1/2/3/4/q]: ")
+        user_input = input("Enter your choice [1/2/3/4/q]: ").strip().lower()
 
         if user_input == '1':
-            print(add())
+            add()
             print("Item added!")
-            
-        if user_input == '2':
-            print(view())
 
-        if user_input == '3':
-            deleting = input("Enter name of item: ")
-            shopping_list.remove(deleting)
-            print(f"{deleting} was deleted!")
+        elif user_input == '2':
+            view()
 
-        if user_input == '4':
+        elif user_input == '3':
+            delete()
+
+        elif user_input == '4':
             clear()
 
-        if user_input == 'q':
+        elif user_input == 'q':
             print("Goodbye!")
-            quit()
+            break
+    else:
+        print("Invalide input, please enter a valid option")
 
 if __name__ == '__main__': 
-    print(list())
+    shopping_menu()
