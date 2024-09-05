@@ -12,32 +12,61 @@ The program should continue running until the user chooses to exit.
 '''
 
 # List of items in the shopping list
+shopping_list = ['banana', 'apple', 'slides', 'milk', 'sugar','bread', 'beverages']
+
+# formatted list horizontally
+formated_list = ', '.join(shopping_list)
+
+# Adding to the list    
+def add():
+    add_list = str(input("Enter name of item: "))
+    shopping_list.append(add_list)
+
+# View the list
+def view():
+    print("Your shopping list: ")
+    for item in shopping_list:
+        print(item)
+
+# clear shopping list
+
+def clear():
+    shopping_list.clear()
+    print("Shopping list have been cleared!")
+
 
 def list():
-    shopping_list = ['banana', 'apple', 'slides', 'milk', 'sugar','bread', 'beverages']
-
-    # formatted list horizontally
-    formated_list = ', '.join(shopping_list)
-    # Displays Items in list vertically
-    for item in shopping_list:
-            print(item)
 
     while True:
-        # formatted list vertically
-        print("Current shopping list: ")
-        for item in shopping_list:
-            print(item)
-        
-        adding = input("Would you like to add to the list? (y/n): ")
-        if adding == "y":
-            add_list = str(input("Enter name of item: "))
-            shopping_list.append(add_list)
 
-            # view list
-            view_list = input("Would you like to view your list? (y/n): ")
-            if view_list == "y":
-                print(shopping_list)
-            if view_list == "n":
-                print(adding)
- 
-print(list())
+        print("What do you want to do to your shopping list?\n")
+
+        print(" [1] to add to list")
+        print(" [2] to view list")
+        print(" [3] to delete items in list")
+        print(" [4] to clear list")
+        print(" [q] to quit \n")
+
+        user_input = input("Enter your choice [1/2/3/4/q]: ")
+
+        if user_input == '1':
+            print(add())
+            print("Item added!")
+            
+        if user_input == '2':
+            print(view())
+
+        if user_input == '3':
+            deleting = input("Enter name of item: ")
+            shopping_list.remove(deleting)
+            print(f"{deleting} was deleted!")
+
+        if user_input == '4':
+            clear()
+
+        if user_input == 'q':
+            print("Goodbye!")
+            quit()
+
+if __name__ == '__main__': 
+    print(list())
