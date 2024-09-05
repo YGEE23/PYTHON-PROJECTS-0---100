@@ -19,8 +19,12 @@ formated_list = ', '.join(shopping_list)
 
 # Adding to the list    
 def add():
-    add_list = str(input("Enter name of item: "))
+    add_list = str(input("Enter name of item to add or press r to return to menu: ")).strip().lower()
     shopping_list.append(add_list)
+    
+# cancel the add operation
+    if add_list == 'r':
+        shopping_menu()
 
 # View the list
 def view():
@@ -35,13 +39,20 @@ def clear():
 
 # delete an item on the list
 def delete ():
-    item_to_delete = input("Enter name of item to delete: ")
+    # below prompts user to correctly input an existing item to delete
 
-    try:
-        shopping_list.remove(item_to_delete)
-        print(f"{item_to_delete} was deleted from the shopping list.")
-    except ValueError:
-        print(f"Error: {item_to_delete} is not in the shopping list.")
+    while True:
+        item_to_delete = input("Enter name of item to delete and r to return back to menu: ").strip().lower()
+        if item_to_delete in shopping_list:
+            shopping_list.remove(item_to_delete)
+            print(f"{item_to_delete} was deleted from the shopping list.")
+            break
+        # prompts user to cancle delete operation
+        elif item_to_delete == 'r':
+            break
+        else:
+            print(f"Error: {item_to_delete} is not on the shopping list, please try again")
+
 
 
 def shopping_menu():
@@ -59,7 +70,7 @@ def shopping_menu():
 
         if user_input == '1':
             add()
-            print("Item added!")
+            print(f"{user_input} have been added to the list!")
 
         elif user_input == '2':
             view()
