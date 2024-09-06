@@ -19,18 +19,19 @@ formated_list = ', '.join(shopping_list)
 
 # Adding to the list    
 def add():
-    add_list = str(input("Enter name of item to add or press r to return to menu: ")).strip().lower()
-    shopping_list.append(add_list)
-    
-# cancel the add operation
-    if add_list == 'r':
-        shopping_menu()
+    while True:
+        add_list = input("Enter name of item to add or press r to return to menu: ").strip().lower()
+        if add_list == 'r':
+            break # Return to menu without adding any item (cancels add operation)
+
+        shopping_list.append(add_list)
+        print(f"{add_list} has been added to the shopping list!")
 
 # View the list
 def view():
     print("Your shopping list: ")
     for item in shopping_list:
-        print(item)
+        print(f"- {item}")
 
 # clear shopping list
 def clear():
@@ -43,12 +44,12 @@ def delete ():
 
     while True:
         item_to_delete = input("Enter name of item to delete and r to return back to menu: ").strip().lower()
+        if item_to_delete == 'r':
+            break # returns user to main menu
+
         if item_to_delete in shopping_list:
             shopping_list.remove(item_to_delete)
             print(f"{item_to_delete} was deleted from the shopping list.")
-            break
-        # prompts user to cancle delete operation
-        elif item_to_delete == 'r':
             break
         else:
             print(f"Error: {item_to_delete} is not on the shopping list, please try again")
@@ -64,13 +65,12 @@ def shopping_menu():
         print(" [2] to view list")
         print(" [3] to delete items in list")
         print(" [4] to clear list")
-        print(" [q] to quit \n")
+        print(" [q] to Quit \n")
 
         user_input = input("Enter your choice [1/2/3/4/q]: ").strip().lower()
 
         if user_input == '1':
             add()
-            print(f"{user_input} have been added to the list!")
 
         elif user_input == '2':
             view()
