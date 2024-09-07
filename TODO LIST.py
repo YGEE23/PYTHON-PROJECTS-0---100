@@ -34,7 +34,7 @@ def view_tasks():
         print("No tasks available.")
         return
 
-    for i, task in enumerate(tasks, 1):
+    for i, task in enumerate(tasks, 1): # Numbers each tasks
         status = "Completed" if task ["Completed"] else "Incomplete"
         print(f"{i}. {task['Description']} | Due: {task['Due_Date']} | Priority: {task['Priority Level']} | Status: {status} ")
 
@@ -43,7 +43,7 @@ def mark_task_complete():
     view_tasks()
     task_num = int(input("Enter the number of the task to mark as complete: ")) - 1
 
-    if 0 <= task_num < len(tasks):
+    if 0 <= task_num < len(tasks): #checks if user input is not in the list range
         tasks[task_num]["Completed"] = True
         print(f"Task '{tasks[task_num]['Description']}' marked as complete.")
 
