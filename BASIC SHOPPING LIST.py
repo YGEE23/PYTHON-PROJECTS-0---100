@@ -14,24 +14,28 @@ The program should continue running until the user chooses to exit.
 # List of items in the shopping list
 shopping_list = ['banana', 'apple', 'slides', 'milk', 'sugar','bread', 'beverages']
 
-# formatted list horizontally
-formated_list = ', '.join(shopping_list)
-
 # Adding to the list    
 def add():
     while True:
         add_list = input("Enter name of item to add or press r to return to menu: ").strip().lower()
         if add_list == 'r':
             break # Return to menu without adding any item (cancels add operation)
-
-        shopping_list.append(add_list)
-        print(f"{add_list} has been added to the shopping list!")
+        
+        if add_list not in shopping_list: #Prevent adding duplicate items to the shopping list
+            shopping_list.append(add_list)
+            print(f"{add_list} has been added to the shopping list!")
+        else:
+            print(f"{add_list} is already in the shopping list")
 
 # View the list
 def view():
-    print("Your shopping list: ")
-    for item in shopping_list:
-        print(f"- {item}")
+    if shopping_list:
+        print("\nYour shopping list: ")
+        for item in shopping_list:
+            print(f"- {item}")
+    else:   # prints this is the list is empty
+        print("\nYour shopping list is empty!")
+
 
 # clear shopping list
 def clear():
@@ -84,8 +88,8 @@ def shopping_menu():
         elif user_input == 'q':
             print("Goodbye!")
             break
-    else:
-        print("Invalide input, please enter a valid option")
+        else:
+            print("Invalid input, please enter a valid option")
 
 if __name__ == '__main__': 
     shopping_menu()
