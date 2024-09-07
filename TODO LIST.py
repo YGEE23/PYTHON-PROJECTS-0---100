@@ -41,11 +41,11 @@ def view_tasks():
 # Function to mark task as complete
 def mark_task_complete():
     view_tasks()
-    task_num = int(input("Enter th enumber of the task to mark as complete: ")) - 1
+    task_num = int(input("Enter the number of the task to mark as complete: ")) - 1
 
     if 0 <= task_num < len(tasks):
-        tasks[task_num]["completed"] = True
-        print(f"Task '{tasks[task_num]['description']}' marked as complete.")
+        tasks[task_num]["Completed"] = True
+        print(f"Task '{tasks[task_num]['Description']}' marked as complete.")
 
     else:
         print("Invalid task number.")
@@ -58,7 +58,7 @@ def del_task():
 
     if 0 <= task_num < len(tasks):
         deleted_task = tasks.pop(task_num)
-        print(f"Task '{deleted_task['description']}' has been deleted!")
+        print(f"Task '{deleted_task['Description']}' has been deleted!")
 
     else:
         print("Invalid task number.")
