@@ -43,12 +43,25 @@ def mark_task_complete():
     view_tasks()
     task_num = int(input("Enter the number of the task to mark as complete: ")) - 1
 
-    if 0 <= task_num < len(tasks): #checks if user input is not in the list range
+    if 0 <= task_num < len(tasks): #checks if user input is or is not in the list range
         tasks[task_num]["Completed"] = True
         print(f"Task '{tasks[task_num]['Description']}' marked as complete.")
 
     else:
         print("Invalid task number.")
+
+# Mark a task as incomplete
+def mark_task_incomplete():
+    view_tasks()
+    task_num = int(input("Enter the number of the task to mark as incomplete: ")) -1
+
+    if 0 <= task_num < len(tasks): # Checks if user input is withing list range.
+        tasks[task_num]["Completed"] = False
+        print(f"Task '{tasks[task_num]['Description']}' marked Incomplete.")
+
+    else: 
+        print("Invaid task number.")
+
 
 #delete a task
 def del_task():
@@ -72,20 +85,28 @@ def task_manager():
         print("[1] Add a task")
         print("[2] View a task")
         print("[3] Mark a task as completed")
-        print("[4] Delete a task")
-        print("[5] Quit")
+        print("[4] Mark a taskk as Incomplete")
+        print("[5] Delete a task")
+        print("[6] Quit")
 
         choice = input("Select your option: ")
 
         if choice =='1':
             add_task()
+
         elif choice == '2':
             view_tasks()
+
         elif choice == '3':
             mark_task_complete()
+        
         elif choice == '4':
-            del_task()
+            mark_task_incomplete()
+
         elif choice == '5':
+            del_task()
+            
+        elif choice == '6':
             print("Good bye!")
             break
 
